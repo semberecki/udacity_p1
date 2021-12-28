@@ -10,18 +10,7 @@ import torch
 import time
 
 
-# ### 4. It's Your Turn!
-#
-# Now it's your turn to train your own agent to solve the environment!  When training the environment, set `train_mode=True`, so that the line for resetting the environment looks like the following:
-# ```python
-# env_info = env.reset(train_mode=True)[brain_name]
-# ```
 from dqn_agent import Agent
-
-
-def general_info():
-    env = UnityEnvironment(file_name="Banana_Linux/Banana.x86_64")
-    print("loaded")
 
 
 
@@ -41,8 +30,7 @@ def dqn_banana(env, agent, n_episodes=2000, max_t=1000, eps_start=1.0, eps_end=0
     eps = eps_start                    # initialize epsilon
 
     brain_name = env.brain_names[0]
-    brain = env.brains[brain_name]
-
+    #brain = env.brains[brain_name]
 
     for i_episode in range(1, n_episodes+1):
 
@@ -69,6 +57,7 @@ def dqn_banana(env, agent, n_episodes=2000, max_t=1000, eps_start=1.0, eps_end=0
         scores_window.append(score)       # save most recent score
         scores.append(score)              # save most recent score
         eps = max(eps_end, eps_decay*eps) # decrease epsilon
+
         print('Episode {}\tScore: {:.2f} '.format(i_episode, score), end="")
         print(f"Execution time: {end-start} Last episode:{last_t}")
         date = datetime.now().strftime("%Y_%m_%d-%I:%M:%S_%p")
@@ -78,7 +67,6 @@ def dqn_banana(env, agent, n_episodes=2000, max_t=1000, eps_start=1.0, eps_end=0
              print('Episode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_window)))
         if np.mean(scores_window)>=13.0:
             print('\nEnvironment solved in {:d} episodes!\tAverage Score: {:.2f}'.format(i_episode-100, np.mean(scores_window)))
-
             break
     return scores
 
@@ -86,7 +74,7 @@ def dqn_banana(env, agent, n_episodes=2000, max_t=1000, eps_start=1.0, eps_end=0
 
 if __name__ == '__main__':
 
-    env = UnityEnvironment(file_name="Banana_Linux/Banana.x86_64")
+    env = UnityEnvironment(file_name="p1_navigation/Banana_Linux/Banana.x86_64")
     #env = UnityEnvironment(file_name="Banana_Linux_NoVis/Banana.x86_64")
 
     brain_name = env.brain_names[0]
