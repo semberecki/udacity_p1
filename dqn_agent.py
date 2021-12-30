@@ -2,7 +2,7 @@ import numpy as np
 import random
 from collections import namedtuple, deque
 
-from model import QNetwork, QNetworkVisual
+from model import QNetwork
 
 import torch
 import torch.nn.functional as F
@@ -20,7 +20,7 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 class Agent():
     """Interacts with and learns from the environment."""
 
-    def __init__(self, state_size, action_size, seed, visual=False):
+    def __init__(self, state_size, action_size, seed):
         """Initialize an Agent object.
         
         Params
@@ -34,14 +34,9 @@ class Agent():
         self.seed = random.seed(seed)
 
         # Q-Network
-        if visual:
-            self.qnetwork_local = QNetworkVisual(state_size, action_size, seed).to(device)
-            self.qnetwork_target = QNetworkVisual(state_size, action_size, seed).to(device)
-            self.optimizer = optim.Adam(self.qnetwork_local.parameters(), lr=LR)
-        else:
-            self.qnetwork_local = QNetwork(state_size, action_size, seed).to(device)
-            self.qnetwork_target = QNetwork(state_size, action_size, seed).to(device)
-            self.optimizer = optim.Adam(self.qnetwork_local.parameters(), lr=LR)
+        self.qnetwork_local = QNetwork(state_size, action_size, seed, fc1_units=128).to(device)
+        self.qnetwork_target = QNetwork(state_size, action_size, seed, fc1_units=128).to(device)
+        self.optimizer = optim.Adam(self.qnetwork_local.parameters(), lr=LR)
 
         # Replay memory
         self.memory = ReplayBuffer(action_size, BUFFER_SIZE, BATCH_SIZE, seed)
