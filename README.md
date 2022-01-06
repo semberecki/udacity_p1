@@ -1,6 +1,28 @@
 # udacity_rl_p1
 
-## Installation
+
+
+##Project Details
+###State space:
+```
+
+Number of agents: 1
+Number of actions: 4
+States look like: [1.         0.         0.         0.         0.84408134 0.
+0.         1.         0.         0.0748472  0.         1.
+0.         0.         0.25755    1.         0.         0.
+0.         0.74177343 0.         1.         0.         0.
+0.25854847 0.         0.         1.         0.         0.09355672
+0.         1.         0.         0.         0.31969345 0.
+0.        ]
+States have length: 37
+```
+The environment is considered to be solved if agent gets 13 points in 30 second episode and
+the average score is calculated over 100 episodes. 
+
+The solution is described in ```report.md``` file
+
+## Getting Started
 
 Install Python 3.6 and then
 ```
@@ -9,61 +31,13 @@ unzip Banana_Linux_NoVis.zip or unzip Banana_Linux_Vis.zip
 python -m ipykernel install --user --name drlnd --display-name "drlnd"
 jupyter notebook
 ```
-## Solution
-The network was trained with DQN using 3 layer network with PyTorch layers:
 
-1. Linear(64,128)
-2. Linear(128,64)
-3. Linear(64,4).
+## Project sructure
 
-The results are provided in ```Navigation-Solution.ipynb``` 
-The application can be also run with python-script ```main.py```.
-The ```main.py``` containes the DQN algorithm implementation. 
-
-The hyperparamters were set to:
-
-BUFFER_SIZE = int(1e5)  # replay buffer size
-BATCH_SIZE = 64         # minibatch size
-GAMMA = 0.99            # discount factor
-TAU = 1e-3              # for soft update of target parameters
-LR = 5e-4               # learning rate
-UPDATE_EVERY = 4        # how often to update the network
-
-
-## Progress
-
-```
-Episode 100	Average Score: 0.15 eps 0.90
-Episode 200	Average Score: 0.45 eps 0.82
-Episode 300	Average Score: 1.28 eps 0.74
-Episode 400	Average Score: 2.07 eps 0.67
-Episode 500	Average Score: 3.17 eps 0.61
-Episode 600	Average Score: 3.69 eps 0.55
-Episode 700	Average Score: 5.23 eps 0.50
-Episode 800	Average Score: 6.05 eps 0.45
-Episode 900	Average Score: 7.07 eps 0.41
-Episode 1000	Average Score: 7.51 eps 0.37
-Episode 1100	Average Score: 8.47 eps 0.33
-Episode 1200	Average Score: 8.50 eps 0.30
-Episode 1300	Average Score: 10.19 eps 0.27
-Episode 1400	Average Score: 10.06 eps 0.25
-Episode 1500	Average Score: 10.68 eps 0.22
-Episode 1600	Average Score: 11.03 eps 0.20
-Episode 1700	Average Score: 10.98 eps 0.18
-Episode 1800	Average Score: 11.58 eps 0.17
-Episode 1900	Average Score: 10.94 eps 0.15
-Episode 2000	Average Score: 11.91 eps 0.14
-Episode 2100	Average Score: 12.30 eps 0.12
-Episode 2200	Average Score: 11.17 eps 0.11
-Episode 2300	Average Score: 12.46 eps 0.10
-Episode 2371	Average Score: 13.01 eps 0.09
-Environment solved in 2271 episodes!	Average Score: 13.01
-```
-
-The evaluation for trained is agent:
-```Episode 100	Average Score: 14.56 eps 0.00```
-which is above required 13.00 score.
-
-##FUTURE WORK:
-Add full visual input for neural network, as it will increase the agent performance, but will require longer training. 
-
+1. ```main.py``` contains the learning algorithm procedure.
+2. ```model.py``` requires the network
+3. ```dqn_agent``` contains the DQN algorithm
+4. ```checkpoints``` directory with saved checkpoints.
+5. ```images``` contains graphics.
+6. ```p1_navigation_original``` contains original task description
+7. ```python``` directory, has required packages
