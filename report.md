@@ -11,14 +11,9 @@ The results are provided in ```Navigation-Solution.ipynb```
 The application can be also run with python-script ```main.py```.
 
 
-The hyperparamters were set to:
+Network hyperparameters:
 
 ```
-n_episodes=10000
-max_t=1000 
-eps_start=1.0 
-eps_end=0.01 
-eps_decay=0.999
 
 BUFFER_SIZE = int(1e5)  # replay buffer size
 BATCH_SIZE = 64         # minibatch size
@@ -28,7 +23,15 @@ LR = 5e-4               # learning rate
 UPDATE_EVERY = 4        # how often to update the network
 ```
 
-
+Training hyperparameters:
+```
+n_episodes=10000 - maximum number of training episodes
+max_t=1000 -  maximum number of timesteps per episode
+eps_start=1.0 - starting value of epsilon, for epsilon-greedy action selection
+eps_end=0.01 - minimum value of epsilon
+eps_decay=0.999 - multiplicative factor (per episode) for decreasing epsilon
+         
+```
 
 ## Progress
 
