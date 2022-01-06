@@ -1,9 +1,10 @@
 # udacity_rl_p1
 
-
-
 ##Project Details
-###State space:
+
+###State space
+
+
 ```
 
 Number of agents: 1

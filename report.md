@@ -76,5 +76,6 @@ The evaluation for trained is agent is above required 13.00 score:
 ![agent](images/trained_agent.gif)
 
 ##Ideas for Future Work
+
 Add full visual raw pixels for neural network, as it will increase the agent performance, but will require longer training. 
 
