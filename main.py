@@ -67,8 +67,8 @@ def dqn(env, agent, n_episodes=10000, max_t=1000, eps_start=1.0, eps_end=0.01, e
 
 if __name__ == '__main__':
 
-    env = UnityEnvironment(file_name="Banana_Linux_NoVis/Banana.x86")
-    #env = UnityEnvironment(file_name="Banana_Linux/Banana.x86")
+    #env = UnityEnvironment(file_name="Banana_Linux_NoVis/Banana.x86")
+    env = UnityEnvironment(file_name="Banana_Linux/Banana.x86")
 
     # get the default brain
     brain_name = env.brain_names[0]
@@ -104,9 +104,15 @@ if __name__ == '__main__':
     #     if done:                                       # exit loop if episode finished
     #         break
     # print("Score: {}".format(score))
+
     agent = Agent(state_size=state_size, action_size=action_size, seed=0)
     scores = dqn(env, agent)
     scores_eval = dqn(env, agent,train_mode=False, n_episodes=100, score_list_len=100)
+
+    #
+    # agent_eval = Agent(state_size=state_size, action_size=action_size, seed=0)
+    # agent_eval.qnetwork_local.load_state_dict(torch.load('checkpoints/checkpoint.pth'))
+    # scores_eval_checkpoint = dqn(env, agent_eval,train_mode=False, n_episodes=100)
 
     env.close()
 
