@@ -63,7 +63,7 @@ Episode 2371	Average Score: 13.01 eps 0.09
 Environment solved in 2271 episodes!	Average Score: 13.01
 ```
 
-##Plot of Rewards
+## Plot of Rewards
 
 
 ![agent](images/learning_curve.png)
@@ -75,6 +75,7 @@ The evaluation for trained is agent is above required 13.00 score:
 
 ![agent](images/trained_agent.gif)
 
-##Ideas for Future Work
+## Ideas for Future Work
+
 Add full visual raw pixels for neural network, as it will increase the agent performance, but will require longer training. 
 
